@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <!-- Cute fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: pink;
+
+    /* FULL SCREEN CENTER */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* ===== TITLE ===== */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 8vw;   /* responsive */
+    margin: 15px;
+}
+
+/* ===== TEXT ===== */
+p {
+    font-size: 5vw;
+    margin-bottom: 35px;
+}
+
+/* ===== BUTTON ===== */
+button {
+    font-size: 5vw;
+    padding: 14px 35px;
+    border-radius: 30px;
+    border: none;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 80%;
+    max-width: 250px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ffe6ea;
+}
+    </style>
+</head>
+
+<body>
+
+    <h1>🎉 Hey beautiful.... This is just for you 💌 🎉</h1>
+    <p>Are you ready? Muhehe ❤️</p>
+
+    <button onclick="goNext()">YES</button>
+
+    <script>
+        function goNext() {
+            window.location.href = "birthday.html";
+        }
+    </script>
+
+</body>
+</html>
