@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    min-height: 100vh;
+    padding: 25px;
+    color: white;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== TITLE ===== */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 8vw;
+}
+
+/* ===== PARAGRAPH ===== */
+p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 4.5vw;
+    margin-bottom: 30px;
+}
+
+/* ===== BUTTON ===== */
+button {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5vw;
+    padding: 14px 28px;
+    border-radius: 30px;
+    border: none;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    width: 85%;
+    max-width: 300px;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+/* ===== COUNTDOWN ===== */
+#redirectCountdown {
+    margin-top: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 5vw;
+}
+
+/* ===== TAP MESSAGE ===== */
+#tapMessage {
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.9;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 0.9; }
+    50% { opacity: 0.4; }
+}
+
+/* ===== FLOATING HEARTS ===== */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-900px); opacity: 0; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== MUSIC ===== -->
+<audio id="bgMusic" src="music.mp3" loop></audio>
+
+<!-- ===== TAP MESSAGE ===== -->
+<div id="tapMessage">🎵 Tap anywhere if you wanna listen a little intro</div>
+
+<div class="container">
+
+<h1>Glad you said yes 🤭</h1>
+
+<p>
+May today be filled with smiles, laughter, and everything that makes you happy ✨
+</p>
+
+<button onclick="goToSurprise()">
+Click for a small surprise 💌
+</button>
+
+<div id="redirectCountdown"></div>
+
+</div>
+
+<script>
+
+/* ===== Start music on first tap ===== */
+document.body.addEventListener("click", function () {
+    let music = document.getElementById("bgMusic");
+    music.play();
+
+    // hide tap message after starting music
+    document.getElementById("tapMessage").style.display = "none";
+
+}, { once: true });
+
+
+/* ===== Countdown Redirect ===== */
+function goToSurprise() {
+
+    let count = 5;
+    let box = document.getElementById("redirectCountdown");
+
+    box.innerHTML = "Opening surprise in " + count;
+
+    let timer = setInterval(function () {
+
+        count--;
+        box.innerHTML = "Opening surprise in " + count;
+
+        if (count <= 0) {
+            clearInterval(timer);
+            window.location.href = "surprise.html";
+        }
+
+    }, 1000);
+}
+
+
+/* ===== Floating Hearts ===== */
+setInterval(function () {
+
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+
+}, 400);
+
+</script>
+
+</body>
+</html>
